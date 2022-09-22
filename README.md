@@ -10,3 +10,8 @@
  - Uždarius naršyklę testo viduryje grįžus turėtų būti galimybė spręsti toliau.
 
 Trumpai tariant reikia padaryti primityvią klausimų/atsakymų sistemą, kurią galima būtų naudoti atsiskaitymams.
+
+
+P.S.
+
+Panaudokite ankščiau sukurtą "FormBuilder" arba "Tag" klases.
