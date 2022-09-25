@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import path from 'node:path';
 
 export default defineConfig({
     plugins: [
@@ -8,4 +9,11 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+            '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+        }
+    },
 });
+
+// https://getbootstrap.com/docs/5.2/getting-started/vite/
