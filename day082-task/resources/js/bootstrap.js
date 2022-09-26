@@ -1,6 +1,7 @@
 import _ from 'lodash';
 window._ = _;
 
+// Vite alias for TBS
 import 'bootstrap';
 
 /**
