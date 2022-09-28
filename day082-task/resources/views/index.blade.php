@@ -14,31 +14,21 @@
 <div class="container">
     <div class="row my-5">
         <div class="col">
-            <h1 class="text-center">Hello vite</h1>
 
-            <form action="{{route('quiz.php')}}" method="post">
+            <h1 class="text-center">Hello guest, nice to see you here!</h1>
+            <h2 class="text-center">Please introduce yourself</h2>
+
+            <form action="{{ route('index.create') }}" method="post">
 
                 @csrf
 
-                <p>PHP kalba yra:</p>
-
-                <div class="form-check">
-                    <input type="radio" name="q1" value="q1-a1" id="q1-a1">
-                    <label for="q1-a1">Interpretuojama kalba</label>
+                <div class="input-group mb-3">
+                    <input type="text" name="guest_name" id="guest-name" class="form-control" placeholder="Your name">
+                    <button class="btn btn-outline-success">Save</button>
                 </div>
 
-                <div class="form-check">
-                    <input type="radio" name="q1" value="q1-a2" id="q1-a2">
-                    <label for="q1-a2">Kompiliuojama kalba</label>
-                </div>
-
-                <div class="form-check">
-                    <input type="radio" name="q1" value="q1-a3" id="q1-a3">
-                    <label for="q1-a3">Interneto programavimo kalba</label>
-                </div>
-
-                <button class="btn btn-outline-success">Pateikti atsakymą</button>
             </form>
+
         </div>
     </div>
 </div>

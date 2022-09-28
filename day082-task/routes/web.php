@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{IndexController, QuizController};
 
 /*
 |--------------------------------------------------------------------------
@@ -17,18 +18,8 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::post('/', [IndexController::class, 'createGuest'])->name('index.create');
 
-Route::post('/quiz/php', function () {
-
-    // TODO move into controller
-    session(['answers' => [
-        'q1' => $_POST
-    ]]);
-
-    // after storing an answer redirect to another page
-    // or give ability to page through question pages ???
-    redirect('/quiz/php/2');
-})->name('quiz.php');
+Route::get('/quiz', [QuizController::class, 'index'])->name('quiz');
+Route::post('/quiz', [QuizController::class, 'catchQuestion'])->name('quiz.submit');
