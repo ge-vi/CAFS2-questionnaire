@@ -21,3 +21,14 @@ services:
     working_dir: /var/www
     volumes:
       - ../${LOCAL_DIR}:/var/www
+
+  node:
+    container_name: ca-node-questionnaire
+    image: node:16.17-alpine3.15
+    working_dir: /var/www
+    # this prevents container from stopping immediately after start
+    tty: true
+    ports:
+      - "8888:8888"
+    volumes:
+      - ../${LOCAL_DIR}:/var/www
