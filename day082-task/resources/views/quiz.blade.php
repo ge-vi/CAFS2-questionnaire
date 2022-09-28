@@ -15,7 +15,7 @@
     <div class="row my-5">
         <div class="col">
 
-            <h1 class="text-center">Hello {{ Session::get('guest_name') }}!</h1>
+            <h1 class="text-center">Hello {{ $guest_name }}!</h1>
             <h2 class="text-center">Lets start the test</h2>
 
 
@@ -40,7 +40,7 @@
                     <label for="q1-a3">Internet programming language</label>
                 </div>
 
-                <button class="btn btn-outline-success">Submit answer</button>
+                <button class="btn btn-outline-success">Next question</button>
             </form>
 
         </div>

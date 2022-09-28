@@ -19,7 +19,6 @@ class IndexController extends Controller
         $guest = Guest::create(['name' => $request->get('guest_name')]);
 
         $request->session()->put('guest_id', $guest->id);
-        $request->session()->put('guest_name', $guest->name);
 
         return redirect('/quiz');
     }
