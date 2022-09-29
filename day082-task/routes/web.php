@@ -18,8 +18,16 @@ use App\Http\Controllers\{IndexController, QuizController};
 //    return view('welcome');
 //});
 
-Route::get('/', [IndexController::class, 'index'])->middleware('named')->name('index');
-Route::post('/', [IndexController::class, 'createGuest'])->name('index.create');
+Route::get('/', [IndexController::class, 'index'])
+    ->middleware('named')
+    ->name('index');
+Route::post('/', [IndexController::class, 'createGuest'])
+    ->name('index.create');
 
-Route::get('/quiz', [QuizController::class, 'index'])->middleware('named')->name('quiz');
-Route::post('/quiz', [QuizController::class, 'catchQuestion'])->middleware('named')->name('quiz.submit');
+
+Route::get('/quiz', [QuizController::class, 'index'])
+    ->middleware('named')
+    ->name('quiz');
+Route::post('/quiz', [QuizController::class, 'catchQuestion'])
+    ->middleware('named')
+    ->name('quiz.submit');

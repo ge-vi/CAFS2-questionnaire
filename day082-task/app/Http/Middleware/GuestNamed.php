@@ -3,23 +3,29 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class GuestNamed
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @param \Closure(Request): (Response|RedirectResponse) $next
+     * @return Response|RedirectResponse
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->session()->get('guest_id')) {
-            // named guest should not get to first page
-            return $request->getRequestUri() === '/' ? redirect('/quiz') :$next($request);
+        $guestId = $request->session()->get('guest_id');
+
+        if (is_null($guestId)) {
+            return response()->view('index');
+        } elseif (is_numeric($guestId) && $request->getRequestUri() === '/') {
+            return redirect('/quiz');
+        } else {
+            return $next($request);
         }
-        return redirect('/');
     }
 }

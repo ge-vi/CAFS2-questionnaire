@@ -17,6 +17,6 @@ class QuizController extends Controller
 
     public function catchQuestion(Request $request)
     {
-        dd($request);
+        $answer = $request->input('q1');
     }
 }
