@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.html')
 
-    <title>Questionnaire</title>
-
-    @vite(['resources/js/app.js'])
-
-</head>
-<body>
-
-<div class="container">
-    <div class="row my-5">
+@section('content')
         <div class="col">
 
             <h1 class="text-center">Hello guest, nice to see you here!</h1>
@@ -30,8 +18,4 @@
             </form>
 
         </div>
-    </div>
-</div>
-
-</body>
-</html>
+@endsection
