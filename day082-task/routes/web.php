@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{IndexController, QuizController};
+use App\Http\Controllers\{IndexController, QuizController, ResultController};
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +31,6 @@ Route::get('/quiz', [QuizController::class, 'index'])
 Route::post('/quiz', [QuizController::class, 'catchQuestion'])
     ->middleware('named')
     ->name('quiz.submit');
+
+Route::get('/result', [ResultController::class, 'calculateResult'])
+    ->name('quiz.result');
