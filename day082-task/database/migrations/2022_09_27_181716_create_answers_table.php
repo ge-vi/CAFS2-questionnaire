@@ -18,8 +18,9 @@ return new class extends Migration
             $table->id();
             $table->string('question_name');
             $table->string('question_answer');
-            $table->unsignedBigInteger('guest_id');
-            $table->foreign('guest_id')->references('id')->on('guest');
+            // $table->unsignedBigInteger('guest_id');
+            // $table->foreign('guest_id')->references('id')->on('guests');
+            $table->foreignId('guest_id')->constrained();
             $table->timestamps();
         });
     }

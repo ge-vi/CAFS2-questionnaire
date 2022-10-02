@@ -2,21 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Guest;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, int $id)
     {
         $guestId = $request->session()->get('guest_id');
         $guest = Guest::find($guestId);
 
-        return view('quiz', ['guest_name' => $guest->name]);
+        // TODO get data from DB
+        $question = [
+            'id' => $id,
+            'question_text' => 'PHP language is:',
+        ];
+        $question['variants'][] = [
+            'label' => 'Interpreted programming language',
+            'value' => 'q1-a1',
+        ];
+        $question['variants'][] = [
+            'label' => 'Compiled programming language',
+            'value' => 'q1-a2',
+        ];
+        $question['variants'][] = [
+            'label' => 'Internet programming language',
+            'value' => 'q1-a3',
+        ];
+
+        return view('quiz', [
+            'guest_name' => $guest->name,
+            'q' => $question,
+        ]);
     }
 
-    public function catchQuestion(Request $request)
+    public function catchQuestion(Request $request, int $id)
     {
-        $answer = $request->input('q1');
+        // validate ???
+
+        $answer = new Answer();
+        $answer->question_name = $id;
+        $answer->question_answer = $request->input($id);
+        $answer->guest_id = $request->session()->get('guest_id');
+
+        $answer->save();
+
+        return redirect()->route('quiz', ['id' => ++$id]);
     }
 }

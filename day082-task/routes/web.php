@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\ResultController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{IndexController, QuizController, ResultController};
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +26,10 @@ Route::get('/', [IndexController::class, 'index'])
 Route::post('/', [IndexController::class, 'createGuest'])
     ->name('index.create');
 
-
-Route::get('/quiz', [QuizController::class, 'index'])
+Route::get('/quiz/{id}', [QuizController::class, 'index'])
     ->middleware('named')
     ->name('quiz');
-Route::post('/quiz', [QuizController::class, 'catchQuestion'])
+Route::post('/quiz/{id}', [QuizController::class, 'catchQuestion'])
     ->middleware('named')
     ->name('quiz.submit');
 

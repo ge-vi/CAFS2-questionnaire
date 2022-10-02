@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Guest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-
 
 class IndexController extends Controller
 {
@@ -20,6 +18,6 @@ class IndexController extends Controller
 
         $request->session()->put('guest_id', $guest->id);
 
-        return redirect('/quiz');
+        return redirect('/quiz/1');
     }
 }
