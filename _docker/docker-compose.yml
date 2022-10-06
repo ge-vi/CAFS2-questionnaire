@@ -31,7 +31,15 @@ services:
     working_dir: /var/www
     # this prevents container from stopping immediately after start
     tty: true
-    ports:
-      - "8888:8888"
     volumes:
       - ../${LOCAL_DIR}:/var/www
+
+  mysql:
+    image: mysql
+    container_name: ca-mysql-questionnaire
+    env_file:
+      - ./mysql/.env
+    volumes:
+      - ./mysql/data/mariadb:/var/lib/mysql
+    ports:
+      - "3306:3306"
