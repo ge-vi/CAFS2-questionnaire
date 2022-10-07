@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Guest;
+use App\Models\Question;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,13 +14,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('variants', function (Blueprint $table) {
             $table->id();
-            $table->string('question_name');
-            $table->string('question_answer');
-            // $table->unsignedBigInteger('guest_id');
-            // $table->foreign('guest_id')->references('id')->on('guests');
-            $table->foreignIdFor(Guest::class)->constrained();
+            $table->string('label');
+            $table->string('value');
+            $table->boolean('is_correct');
+            $table->foreignIdFor(Question::class)->constrained();
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('variants');
     }
 };

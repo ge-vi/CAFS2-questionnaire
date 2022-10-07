@@ -40,13 +40,24 @@ class QuizController extends Controller
     public function catchQuestion(Request $request, int $id)
     {
         // validate ???
+        // check before if user id exists
 
-        $answer = new Answer();
-        $answer->question_name = $id;
-        $answer->question_answer = $request->input($id);
-        $answer->guest_id = $request->session()->get('guest_id');
 
-        $answer->save();
+
+        Answer::query()->create(
+            [
+                'question_name' => $id,
+                'question_answer' => $request->input($id),
+                'guest' => $request->session()->get('guest_id')
+            ]
+        );
+
+//        $answer = new Answer();
+//        $answer->question_name = $id;
+//        $answer->question_answer = $request->input($id);
+//        $answer->guest_id = $request->session()->get('guest_id');
+//
+//        $answer->save();
 
         return redirect()->route('quiz', ['id' => ++$id]);
     }

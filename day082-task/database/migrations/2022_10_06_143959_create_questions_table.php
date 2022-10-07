@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Guest;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('question_name');
-            $table->string('question_answer');
-            // $table->unsignedBigInteger('guest_id');
-            // $table->foreign('guest_id')->references('id')->on('guests');
-            $table->foreignIdFor(Guest::class)->constrained();
+            $table->string('question_text');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('questions');
     }
 };

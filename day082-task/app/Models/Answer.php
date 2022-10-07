@@ -4,12 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Answer extends Model
+final class Answer extends Model
 {
-    protected $fillable = ['question_name', 'question_answer'];
+    protected $fillable = [
+        'question_name',
+        'question_answer',
+        'guest_id'
+    ];
 
     public function guest()
     {
-        $this->belongsTo(Guest::class);
+        return $this->belongsTo(Guest::class);
     }
 }
