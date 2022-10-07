@@ -12,11 +12,11 @@ RUN apk add --update \
 		libjpeg-turbo-dev \
 		libpng-dev \
 	&& docker-php-ext-configure gd --with-jpeg --with-freetype \
-	&& docker-php-ext-install gd \
-	&& pecl install xdebug-3.1.5 \
-	&& docker-php-ext-enable xdebug
+	&& docker-php-ext-install gd
+#	&& pecl install xdebug-3.1.5 \
+#	&& docker-php-ext-enable xdebug
 	
-COPY ./xdebug.ini "${PHP_INI_DIR}/conf.d"
+#COPY ./xdebug.ini "${PHP_INI_DIR}/conf.d"
 
 COPY ./conf/* /usr/local/etc/php/conf.d
 
