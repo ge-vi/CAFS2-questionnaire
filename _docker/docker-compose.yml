@@ -40,6 +40,6 @@ services:
     env_file:
       - ./mysql/.env
     volumes:
-      - ./mysql/data/mariadb:/var/lib/mysql
+      - ./mysql/data/mysql:/var/lib/mysql
     ports:
       - "3306:3306"
