@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Answer;
 use App\Models\Guest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 
 class ResultController extends Controller
 {
