@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 final class Answer extends Model
 {
     protected $fillable = [
-        'question_name',
+        'question_name', // TODO should be 'question_id' ???
         'question_answer',
-        'guest_id'
+        'guest_id',
     ];
 
     public function guest()
