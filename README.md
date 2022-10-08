@@ -15,3 +15,15 @@ Trumpai tariant reikia padaryti primityvią klausimų/atsakymų sistemą, kurią
 P.S.
 
 Panaudokite ankščiau sukurtą "FormBuilder" arba "Tag" klases.
+
+
+---
+
+ge-vi notes
+
+`php artisan make:migration add_{{field_name}}_field_to_{{table_name}}_table`
+
+alter table columns in migrate file
+
+and run migrations:
+`php artisan migrate`
